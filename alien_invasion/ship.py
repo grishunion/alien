@@ -8,12 +8,32 @@ class Ship():
         """Инициализирует корабль и задает его панчальную позицию"""
         self.screen = ai_game.screen
         self.screen_rect = ai_game.screen.get_rect()
+        self.settings = ai_game.settings
 
         #Загружает изображение корабля и получает прямоугольник
         self.image = pygame.image.load('alien_invasion/images/ship.bmp')
         self.rect = self.image.get_rect()
         #Каждый новый корабль появляется у нижнего края экрана
         self.rect.midbottom = self.screen_rect.midbottom
+
+        #Сохранение вещественной координаты центра коробля
+        self.x = float(self.rect.x)
+
+        #Флаг перемещения
+        self.moving_right = False
+        self.moving_left = False
+
+
+    def update(self):
+        """Обновляет позицию корабля с учетом флага"""
+        #Обновляется атрибут x, не rect
+        if self.moving_right:
+            self.x += self.settings.ship_speed 
+        if self.moving_left:
+            self.x -= self.settings.ship_speed        
+
+        #Обновление атрибута rect на основании self.x
+        self.rect.x = self.x    
 
     def blitme(self):
         """Рисует корабль в текущей позиции"""
