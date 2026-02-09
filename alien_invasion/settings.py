@@ -11,13 +11,14 @@ class Settings():
 
         #Настройка корабля
         self.ship_speed = 1.5
+        self.ship_limit = 3
 
         #ПАраметры снаряда
-        self.bullet_speed = 1
-        self.bullet_width = 3
-        self.bullet_height = 15
+        self.bullet_speed = 1.5
+        self.bullet_width = 10
+        self.bullet_height = 3
         self.bullet_color = (200, 0, 0)
-        self.bullets_allowed = 3
+        self.bullets_allowed = 5
         #Настройка пришельцев
         self.alien_speed = 1.0
         self.fleet_drop_speed = 3
